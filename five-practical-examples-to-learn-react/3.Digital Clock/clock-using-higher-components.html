@@ -1,0 +1,95 @@
+<!doctype html lang='en'>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>React Clock</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous">
+    <script type="text/javascript" src="https://unpkg.com/react@15.3.1/dist/react.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/react-dom@15.3.1/dist/react-dom.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+        body {
+            padding: 10px;
+            margin: 10px;
+            font-size: 3.25em;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+            // wrapper Component
+            // has the functionality we want reuse
+
+            // Wrapped Component
+            // has the functionality that we want to extend the wrapper component with
+
+            function clockWithDisplay(DisplayComponent) {
+                return class extends React.Component {
+                    constructor(props) {
+                        super(props);
+
+                        this.state = {
+                            date: new Date()
+                        };
+                    }
+
+                    componentDidMount() {
+                        setInterval(() => {
+                            this.tick();
+                        }, 1000);
+                    }
+
+                    tick() {
+                        this.setState({
+                            date: new Date()
+                        });
+                    }
+
+                    render() {
+                        let date = this.state.date;
+                        let hourOffset = parseInt(this.props.hourOffset || 0, 10);
+                        
+                        date.setHours(date.getHours() + hourOffset);
+
+
+                        return (
+                            <DisplayComponent date={this.state.date} />
+                        );
+                    }
+                }
+            }
+
+            // Stateless Component
+            function DisplayTimeClock(props) {
+                return (
+                    <p>{props.date.toLocaleTimeString()}</p>
+                );
+            }
+
+            // Stateless Component
+            function DisplayDateTimeClock(props) {
+                return (
+                    <p>{props.date.toLocaleString()}</p>
+                );
+            }
+
+            const TimeClock = clockWithDisplay(DisplayTimeClock);
+            const DateTimeClock = clockWithDisplay(DisplayDateTimeClock);
+
+            ReactDOM.render(
+                <div>
+                    <TimeClock />
+                    
+                    <DateTimeClock hourOffset={-1}/>
+                </div>,
+                document.getElementById('app')
+            );
+        </script>
+</body>
+
+</html>

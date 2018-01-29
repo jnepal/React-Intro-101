@@ -1,0 +1,23 @@
+<!doctype html lang='en'>
+<html>
+    <head>
+        <meta charset="UTF-8"/>  
+        <title>React Hello World</title>
+        <script type="text/javascript" src="https://unpkg.com/react@15.3.1/dist/react.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/react-dom@15.3.1/dist/react-dom.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="app"></div>
+
+        <script type="text/babel">
+            ReactDOM.render(
+                <div id="container" className="content">
+                    <h1>Hello, World!</h1>
+                    <p>The content is in a paragraph.</p>
+                </div>,
+                document.getElementById('app')
+            );
+        </script>
+    </body>
+</html>

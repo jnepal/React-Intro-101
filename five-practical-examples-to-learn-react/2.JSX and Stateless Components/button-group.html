@@ -1,0 +1,67 @@
+<!doctype html lang='en'>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>React Button Group</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous">
+    <script type="text/javascript" src="https://unpkg.com/react@15.3.1/dist/react.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/react-dom@15.3.1/dist/react-dom.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+
+            let buttonItems = [
+                'Home',
+                'Edit',
+                'Help'
+            ];
+
+            let anotherButtonItems = [
+                'Profile',
+                'Logout'
+            ];
+
+            // Components can be stateless ( if created using function ) and with state. The convention while 
+            // creating stateless component by using function is that capitalise the first letter of function name
+            // such as in class
+
+            function ButtonGroup(props) {
+                
+                let items = props.items.map((item, index) => (
+                        <ButtonGroupItem key={index} text={item} />
+                    )
+                );
+
+                return (
+                    <div className="btn-group" role="group">
+                        {items}
+                    </div>
+                );
+                
+            }
+
+
+            function ButtonGroupItem(props) {
+                return (
+                    <button type="button" className="btn btn-default">{props.text}</button>
+                );
+            } 
+
+            ReactDOM.render(
+                <div>
+                    <ButtonGroup items={buttonItems}/>,
+                    <br/><br/>
+                    <ButtonGroup items={anotherButtonItems}/>
+                </div>,
+                document.getElementById('app')
+            );
+        </script>
+</body>
+
+</html>

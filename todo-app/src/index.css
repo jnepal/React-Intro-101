@@ -1,0 +1,83 @@
+*{
+  box-sizing: border-box;
+}
+
+body {
+  background: #e96443;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #904e95, #e96443);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #904e95, #e96443); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.container{
+  margin: auto;
+  width: 50%;
+}
+
+.todo-heading {
+  color: whitesmoke;
+  margin-bottom: 0;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 6px;
+}
+
+.todo-list-item {
+  background: rebeccapurple;
+  color: white;
+  margin-bottom: 1px;
+  padding: 1em 2em;
+  position: relative;
+}
+
+.todo-controls {
+  text-align: center;
+}
+
+.todo-controls-input {
+  border: 0;
+  font-size: 18px;
+  padding: 8px;
+  width: 100%;
+}
+
+.todo-controls-button {
+  background: rebeccapurple;
+  border: 0;
+  color: white;
+  font-size: 18px;
+  margin: 1em 2em;
+  padding: 8px 16px;
+}
+
+.todo-controls-button:hover {
+  background: #e91e63;
+  cursor: pointer;
+}
+
+.new-todo-enter {
+  opacity: 0;
+}
+
+.new-todo-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.new-todo-leave {
+  opacity: 1;
+}
+
+.new-todo-leave-active {
+  opacity: 0;
+  transition: opacity 500ms ease-out;
+}
+
+.todo-list-checkbox {
+  float: right;
+}
